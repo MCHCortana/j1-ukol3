@@ -1,10 +1,17 @@
 package cz.czechitas.ukol3.model;
 
+import java.util.Objects;
+import java.util.Locale;
+
 public class Drive {
     private long driveCapacity; // in bites
-    private long usedSpace; // in bites
+    private long driveUsed; // in bites
 
     public long getDriveCapacity() {
+        if (driveCapacity == 0) {
+            throw new IllegalStateException("Sorry I need to know the drive's capacity!");
+        }
+        ;
         return driveCapacity;
     }
 
@@ -13,12 +20,20 @@ public class Drive {
     }
 
     public long getUsedSpace() {
-        return usedSpace;
+        if (driveUsed == 0) {
+            throw new IllegalStateException("Sorry I need to know how much space on the drive is used!");
+        }
+        ;
+        return driveUsed;
     }
 
     public void setUsedSpace(long usedSpace) {
-        this.usedSpace = usedSpace;
+        this.driveUsed = usedSpace;
     }
 
-    public String toString(){ return "Budu něco dělat. ";};
+    public void driveState() {
+        System.out.println("Here are the drive parameters:");
+        System.out.println("Drive capacity: " + String.format(Locale.of("CS", "cz"), "%,d", getDriveCapacity()) + " bytes");
+        System.out.println("Used space: " + String.format(Locale.of("CS", "cz"), "%,d",getUsedSpace()) + " bytes");
+    }
 }
