@@ -22,16 +22,29 @@ public class HlavniProgram {
 
         Drive mujMacDrive = new Drive();
         mujMacDrive.setDriveCapacity(245107195904L);
-        mujMacDrive.setUsedSpace(245107195904L - 166623969280L); // initial used Drive value, too lazy to use a calculator
-        mujMacDrive.driveState();
-        tynkaComp.createFile(mujMacDrive, 166623969280L);
-        tynkaComp.deleteFile(mujMacDrive, 245107195904L);
-        tynkaComp.turnOn(mujMacCPU, mujMacRAM, mujMacDrive);
-        tynkaComp.computerState(mujMacCPU, mujMacRAM, mujMacDrive);
+        mujMacDrive.setUsedSpace(245107195904L - 166623969280L); // initial used Drive value
+        mujMacDrive.setDriveName("Céčko");
+//        mujMacDrive.driveState();
+
+        Drive mujMacDriveSecondary = new Drive();
+        mujMacDriveSecondary.setDriveCapacity(345107195904L);
+        mujMacDriveSecondary.setDriveName("Efko");
+//        mujMacDriveSecondary.driveState();
+
+        tynkaComp.turnOn(mujMacCPU, mujMacRAM, mujMacDrive, mujMacDriveSecondary);
+        tynkaComp.computerState(1, mujMacCPU, mujMacRAM, mujMacDrive, mujMacDriveSecondary);
+
+        tynkaComp.createFile(mujMacDrive, mujMacDriveSecondary, 166623969280L);
+
+        tynkaComp.computerState(2, mujMacCPU, mujMacRAM, mujMacDrive, mujMacDriveSecondary);
+
+        tynkaComp.deleteFile(mujMacDrive, mujMacDriveSecondary,245107195905L);
+
+
         tynkaComp.turnOff();
         tynkaComp.turnOff();
-        tynkaComp.turnOn(mujMacCPU, mujMacRAM, mujMacDrive);
-        tynkaComp.turnOn(mujMacCPU, mujMacRAM, mujMacDrive);
+        tynkaComp.turnOn(mujMacCPU, mujMacRAM, mujMacDrive, mujMacDriveSecondary);
+        tynkaComp.turnOn(mujMacCPU, mujMacRAM, mujMacDrive, mujMacDriveSecondary);
     }
 
 }

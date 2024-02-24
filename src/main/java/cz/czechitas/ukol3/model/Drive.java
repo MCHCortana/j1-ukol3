@@ -6,6 +6,7 @@ import java.util.Locale;
 public class Drive {
     private long driveCapacity; // in bites
     private long driveUsed; // in bites
+    private String driveName;
 
     public long getDriveCapacity() {
         if (driveCapacity == 0) {
@@ -31,9 +32,18 @@ public class Drive {
         this.driveUsed = usedSpace;
     }
 
+    public String getDriveName() {
+        return driveName;
+    }
+
+    public void setDriveName(String driveName) {
+        this.driveName = driveName;
+    }
+
     public void driveState() {
         System.out.println("Here are the drive parameters:");
+        System.out.println("Drive name" + getDriveName());
         System.out.println("Drive capacity: " + String.format(Locale.of("CS", "cz"), "%,d", getDriveCapacity()) + " bytes");
         System.out.println("Used space: " + String.format(Locale.of("CS", "cz"), "%,d",getUsedSpace()) + " bytes");
-    }
+        }
 }
