@@ -133,9 +133,9 @@ public class Computer {
             int driveFileFit = checkFileSize(false, drive, fileSize);
             if (driveFileFit == 2) { //case when the file is bigger than primary drive capacity
                 int driveFitSecondary = checkFileSize(false, secondaryDrive, fileSize);
-                if (driveFitSecondary == 2) { // case when the file is too big to delete even from the secondary drive
+                if (driveFitSecondary == 2) {
                     throw new IllegalStateException("ERROR! NON existent file! The file you are trying to delete is bigger than both drives' individual used space.");
-                } else if (driveFitSecondary == 0) { // case when the file cannot be on drive as it is bigger than the used space, but is just big enough to be found on the secondary drive.
+                } else if (driveFitSecondary == 0) {
                     secondaryDrive.setUsedSpace(0);
                     System.out.println("File was deleted from secondary drive. ");
                     System.out.println("HURRAY! Your secondary drive is as new, completely empty. Have fun creating new files here");
@@ -145,7 +145,7 @@ public class Computer {
                     System.out.println("File was deleted from secondary drive. ");
                     System.out.println(("New USED space on drive is: ") + newSecondaryDriveUsedSpace + "bytes");
                 }
-                ; //this covers all the possibilities when the file is too big for the first drive
+                ;
             } else if (driveFileFit == 0) {
                 drive.setUsedSpace(0);
                 System.out.println("File was deleted from primary drive. ");
