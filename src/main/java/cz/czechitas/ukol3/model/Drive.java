@@ -20,9 +20,9 @@ public class Drive {
     }
 
     public long getUsedSpace() {
-        if (driveUsed == 0) {
-            throw new IllegalStateException("Sorry I need to know how much space on the drive is used!");
-        }
+//        if (driveUsed == 0) {
+//            throw new IllegalStateException("Sorry I need to know how much space on the drive is used!");
+//        } used drive information 0 value possible when drive is empty. Conditions not necessary.
         ;
         return driveUsed;
     }
