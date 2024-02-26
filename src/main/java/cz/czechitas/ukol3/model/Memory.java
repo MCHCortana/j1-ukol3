@@ -1,23 +1,20 @@
 package cz.czechitas.ukol3.model;
 
-import java.util.Locale;
-
 public class Memory {
-    private long memoryCapacity; // in bytes
+    private long capacity;
 
-    public void setMemoryCapacity(long memoryCapacity) {
-        this.memoryCapacity = memoryCapacity;
+    public void setCapacity(long capacity) {
+        this.capacity = capacity;
     }
 
-    public long getMemoryCapacity() {
-        if (memoryCapacity == 0){
-            throw new IllegalStateException(("Sorry you need to set RAM capacity. "));
-        }
-        return memoryCapacity;
+    public long getCapacity() {
+        return capacity;
     }
 
-    public void RAMstate() {
-
-        System.out.println("Computer memory capacity is: " + String.format(Locale.of("CS", "cz"), "%,d", getMemoryCapacity()));
+    @Override
+    public String toString() {
+        return "Memory{" +
+                "capacity=" + capacity +
+                '}';
     }
 }
