@@ -5,6 +5,15 @@ public class Computer {
     private Processor processor;
     private Memory memory;
     private Drive drive;
+    private Drive secondaryDrive;
+
+    public Drive getSecondaryDrive() {
+        return secondaryDrive;
+    }
+
+    public void setSecondaryDrive(Drive secondaryDrive) {
+        this.secondaryDrive = secondaryDrive;
+    }
 
     public Processor getProcessor() {
         return processor;
@@ -55,19 +64,17 @@ public class Computer {
         return isOn;
     }
 
-    public void createFile(Drive drive, Drive secondaryDrive, long fileSize) {
+    public void createFileComplete(long fileSize) {
         if (isOn) {
-            int driveFileFit = checkFileSize(true, drive, fileSize);
+            int driveFileFit = driveFitCheck(true, fileSize, drive);
             if (driveFileFit == 2) {
-                int driveFileFitSecondary = checkFileSize(true, secondaryDrive, fileSize);
+                int driveFileFitSecondary = driveFitCheck(true, fileSize, secondaryDrive);
                 if (driveFileFitSecondary == 2) {
-                    throw new IllegalStateException("ERROR! The file you are trying to create is bigger than both drives' individual capacity.");
+                    System.out.println("ERROR! The file you are trying to create is bigger than both drives' individual capacity.");
                 } else if (driveFileFitSecondary == 0) {
-                    drive.setUsedSpace(secondaryDrive.getCapacity());
-
+                    secondaryDrive.setUsedSpace(secondaryDrive.getCapacity());
                     System.out.println("WARNING! The file you are creating has depleted the second drive's capacity. Delete files using method drive.deleteFile(), or extend your drive capacity.");
                     System.out.println("File was created on secondary drive.");
-                    System.out.println("WARNING! Both drives are full.");
                 } else {
                     long newSecondaryDriveUsedSpace = secondaryDrive.getUsedSpace() + fileSize;
                     secondaryDrive.setUsedSpace(newSecondaryDriveUsedSpace);
@@ -85,19 +92,18 @@ public class Computer {
                 System.out.println("File was created on primary drive.");
                 System.out.println("New USED primary drive space is: " + newPrimaryDriveUsedSpace + "bytes");
             }
-
         } else {
             throw new IllegalStateException("You cannot be creating files while the computer is OFF. Turn on your computer!");
         }
     }
 
-    public void deleteFile(Drive drive, Drive secondaryDrive, long fileSize) {
+    public void deleteFile( long fileSize) {
         if (isOn) {
-            int driveFileFit = checkFileSize(false, drive, fileSize);
+            int driveFileFit = driveFitCheck(false, fileSize, drive);
             if (driveFileFit == 2) { //case when the file is bigger than primary drive capacity
-                int driveFitSecondary = checkFileSize(false, secondaryDrive, fileSize);
+                int driveFitSecondary = driveFitCheck(false, fileSize, secondaryDrive);
                 if (driveFitSecondary == 2) {
-                    throw new IllegalStateException("ERROR! NON existent file! The file you are trying to delete is bigger than both drives' individual used space.");
+                    System.out.println("ERROR! NON existent file! The file you are trying to delete is bigger than both drives' individual used space.");
                 } else if (driveFitSecondary == 0) {
                     secondaryDrive.setUsedSpace(0);
                     System.out.println("File was deleted from secondary drive. ");
@@ -120,11 +126,11 @@ public class Computer {
                 System.out.println("New USED primary drive space is: " + newPrimaryDriveUsedSpace + "bytes");
             }
         } else {
-            throw new IllegalStateException("You cannot be creating files while the computer is OFF. Turn on your computer!");
+            System.out.println("You cannot be creating files while the computer is OFF. Turn on your computer!");
         }
     }
 
-    public int checkFileSize(boolean creating, Drive drive, long fileSize) {
+    public int driveFitCheck(boolean creating, long fileSize, Drive drive) {
         long driveFileFit;
         if (creating) {
             driveFileFit = drive.getCapacity() - (drive.getUsedSpace() + fileSize);
@@ -146,6 +152,7 @@ public class Computer {
                 ", processor=" + processor +
                 ", memory=" + memory +
                 ", drive=" + drive +
+                ", secondaryDrive=" + secondaryDrive +
                 '}';
     }
 }
