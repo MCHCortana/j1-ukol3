@@ -1,5 +1,7 @@
 package cz.czechitas.ukol3.model;
 
+import java.util.Locale;
+
 public class Computer {
     private boolean isOn;
     private Processor processor;
@@ -147,13 +149,12 @@ public class Computer {
 
     @Override
     public String toString() {
-        return "Computer{" +
-                "isOn=" + isOn +
-                ", processor=" + processor +
-                ", memory=" + memory +
-                ", drive=" + drive +
-                ", secondaryDrive=" + secondaryDrive +
-                '}';
+        return "Computer status: {" +
+                "Computer is On: " + isOn + " " +
+                "Processor(CPU) information: " + processor + " " +
+                "Memory(RAM) information" + memory + " " +
+                "Drive information" + drive +
+                "}";
     }
 }
 

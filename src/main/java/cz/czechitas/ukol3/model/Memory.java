@@ -1,5 +1,7 @@
 package cz.czechitas.ukol3.model;
 
+import java.util.Locale;
+
 public class Memory {
     private long capacity;
 
@@ -13,8 +15,6 @@ public class Memory {
 
     @Override
     public String toString() {
-        return "Memory{" +
-                "capacity=" + capacity +
-                '}';
+        return "Computer memory capacity is: " + String.format(Locale.of("CS", "cz"), "%,d", capacity);
     }
 }

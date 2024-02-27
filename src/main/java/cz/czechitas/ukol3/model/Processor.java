@@ -1,5 +1,7 @@
 package cz.czechitas.ukol3.model;
 
+import java.util.Locale;
+
 public class Processor {
     private String producer;
     private long speed;
@@ -22,9 +24,8 @@ public class Processor {
 
     @Override
     public String toString() {
-        return "Processor{" +
-                "producer='" + producer + '\'' +
-                ", speed=" + speed +
-                '}';
+        return "Here are the CPU parameters:" + "\n" +
+                "CPU producer: " + getProducer() + "\n" +
+                "CPU speed in Hz: " + String.format(Locale.of("CS", "cz"), "%,d", getSpeed());
     }
 }
