@@ -99,7 +99,7 @@ public class Computer {
         }
     }
 
-    public void deleteFile( long fileSize) {
+    public void deleteFile(long fileSize) {
         if (isOn) {
             int driveFileFit = driveFitCheck(false, fileSize, drive);
             if (driveFileFit == 2) { //case when the file is bigger than primary drive capacity

@@ -18,7 +18,7 @@ public class HlavniProgram {
         System.out.println(mujMacCPU.toString());
         tynkaComp.setProcessor(mujMacCPU);
 
-        tynkaComp.turnOn(); // testing correct PC setup warning
+        tynkaComp.turnOn();
 
         System.out.println(mujMacCPU.toString());
 
@@ -27,20 +27,18 @@ public class HlavniProgram {
         tynkaComp.setMemory(mujMacRAM);
         System.out.println(mujMacRAM.toString());
 
-        tynkaComp.turnOn(); // testing correct PC setup warning
+        tynkaComp.turnOn();
 
         System.out.println(mujMacCPU.toString());
 
         Drive mujMacDrive = new Drive();
         mujMacDrive.setCapacity(245_107_195_904L);
         mujMacDrive.setUsedSpace(245_107_195_904L - 165_641_760_768L);
-//        mujMacDrive.setCapacity(1000L); //test drive create delete File
         tynkaComp.setDrive(mujMacDrive);
         System.out.println(mujMacDrive.toString());
 
         Drive mujMacDriveSecondary = new Drive();
         mujMacDriveSecondary.setCapacity(345_107_195_904L);
-//        mujMacDriveSecondary.setCapacity(1500L); //test drive create/delete File
         tynkaComp.setSecondaryDrive(mujMacDriveSecondary);
 
         tynkaComp.turnOn();
@@ -54,48 +52,4 @@ public class HlavniProgram {
         System.out.println(tynkaComp.toString());
         tynkaComp.turnOn();
     }
-
-    //------------createFileTest--------------------------
-//        System.out.println("2600L");
-//        tynkaComp.createFileComplete(2600L);
-//        System.out.println(tynkaComp.toString());
-//
-//        System.out.println("2500L");
-//        tynkaComp.createFileComplete(2500L);
-//        System.out.println(tynkaComp.toString());
-//
-//        System.out.println("1100L");
-//        tynkaComp.createFileComplete(1100L);
-//        System.out.println(tynkaComp.toString());
-////
-//        System.out.println("400L");
-//        tynkaComp.createFileComplete(400L);
-//        System.out.println(tynkaComp.toString());
-//
-//        System.out.println("700L");
-//        tynkaComp.createFileComplete(700L);
-//        System.out.println(tynkaComp.toString());
-//
-//        System.out.println("600L");
-//        tynkaComp.createFileComplete(600L);
-//        System.out.println(tynkaComp.toString());
-//
-//        System.out.println("401L");
-//        tynkaComp.createFileComplete(401L);
-//        System.out.println(tynkaComp.toString());
-//
-//        System.out.println("398L");
-//        tynkaComp.createFileComplete(398L);
-//        System.out.println(tynkaComp.toString());
-//
-//        System.out.println("2L");
-//        tynkaComp.createFileComplete(2L);
-//        System.out.println(tynkaComp.toString());
-//
-//        tynkaComp.deleteFile(1100L);
-//        System.out.println(tynkaComp.toString());
-//        tynkaComp.deleteFile(1500L);
-//        System.out.println(tynkaComp.toString());
-//        tynkaComp.deleteFile(400L);
-//        System.out.println(tynkaComp.toString());
 }
